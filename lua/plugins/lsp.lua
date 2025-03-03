@@ -17,7 +17,8 @@ return {
                 dependencies = {
                     "rafamadriz/friendly-snippets"
                 }
-            }
+            },
+            'rcarriga/cmp-dap'
         },
         config = function()
             local cmp = require('cmp')
@@ -47,6 +48,16 @@ return {
                     { name = 'luasnip' }, -- For luasnip users.
                     { name = 'path' },
                 }),
+                enabled = function()
+                    return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
+                        or require("cmp_dap").is_dap_buffer()
+                end
+            })
+
+            require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+                sources = {
+                    { name = "dap" },
+                },
             })
 
             vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })

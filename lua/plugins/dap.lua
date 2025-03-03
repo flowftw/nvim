@@ -8,7 +8,7 @@ return {
             "nvim-neotest/nvim-nio",
             "leoluz/nvim-dap-go",
         },
-        config = function ()
+        config = function()
             require('dap.ext.vscode').load_launchjs()
             -- require('dap.ext.vscode').json_decode = require'json5'.parse
             --[[
@@ -82,13 +82,14 @@ return {
             vim.keymap.set('n', '<F9>', function() require('dap').terminate() end)
             vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
             vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
-            vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+            vim.keymap.set('n', '<Leader>lp',
+                function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
             vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
             vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
-            vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
+            vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function()
                 require('dap.ui.widgets').hover()
             end)
-            vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
+            vim.keymap.set({ 'n', 'v' }, '<Leader>dp', function()
                 require('dap.ui.widgets').preview()
             end)
             vim.keymap.set('n', '<Leader>df', function()
@@ -118,7 +119,7 @@ return {
                 -- open_in_tab("console")
             end
 
-            vim.keymap.set({'n', 'v'}, '<Leader>du', function()
+            vim.keymap.set({ 'n', 'v' }, '<Leader>du', function()
                 dapui.close()
             end)
             -- dap.listeners.before.event_terminated.dapui_config = function()
