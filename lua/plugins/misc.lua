@@ -22,7 +22,7 @@ return {
     "folke/neodev.nvim",
     {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.8',
+        branch = '0.1.x',
         dependencies = {
             'nvim-lua/plenary.nvim'
         },
@@ -44,7 +44,8 @@ return {
                     vimgrep_arguments = vimgrep_arguments,
                     file_ignore_patterns = {
                         "node_modules", "build", "dist", "yarn.lock"
-                    }
+                    },
+                    border = false
                 },
                 pickers = {
                     find_files = {

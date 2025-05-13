@@ -61,13 +61,6 @@ return {
                 },
             })
 
-            vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
-
-            vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help,
-                { border = 'rounded' })
-
-            vim.diagnostic.config { float = { border = 'rounded' } }
-
             -- Add cmp_nvim_lsp capabilities settings to lspconfig
             -- This should be executed before you configure any language server
             local lspconfig_defaults = require('lspconfig').util.default_config
