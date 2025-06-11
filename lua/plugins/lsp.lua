@@ -1,10 +1,8 @@
 return {
     -- LSP
     {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v4.x',
+        'williamboman/mason.nvim',
         dependencies = {
-            'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
             'neovim/nvim-lspconfig',
             'hrsh7th/cmp-nvim-lsp',
@@ -85,19 +83,10 @@ return {
                     vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
                     vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
                     vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-                    vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+                    vim.keymap.set({ 'n', 'x' }, 'grf', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
                     vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
                 end,
             })
-
-            local lsp_zero = require('lsp-zero')
-            lsp_zero.extend_lspconfig({})
-            lsp_zero.format_mapping('<F3>', {
-                servers = {
-                    ['ruff'] = { 'python' },
-                }
-            })
-
 
             -- to learn how to use mason.nvim with lsp-zero
             -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guide/integrate-with-mason-nvim.md
@@ -105,58 +94,33 @@ return {
 
             require('mason-lspconfig').setup({
                 ensure_installed = { 'jdtls' },
-                handlers = {
-                    lsp_zero.default_setup,
-                    jdtls = lsp_zero.noop,
-                    lua_ls = function()
-                        require('lspconfig').lua_ls.setup({
-                            on_init = function(client)
-                                lsp_zero.nvim_lua_settings(client, {})
-                            end,
-                        })
-                    end,
-                    gopls = function()
-                        require 'lspconfig'.gopls.setup({
-                            settings = {
-                                gopls = {
-                                    buildFlags = { "-tags=pki" }
-                                },
-                            }
-                        })
-                    end,
-                    -- pyright = function()
-                    --     require 'lspconfig'.pyright.setup({
-                    --         settings = {
-                    --             python = {
-                    --                 analysis = {
-                    --                     typeCheckingMode = "off",
-                    --                     autoSearchPaths = true,
-                    --                     diagnosticMode = "workspace",
-                    --                     useLibraryCodeForTypes = true
-                    --                 }
-                    --             }
-                    --         }
-                    --     })
-                    -- end,
-                    basedpyright = function()
-                        require 'lspconfig'.basedpyright.setup({
-                            settings = {
-                                python = {
-                                    analysis = {
-                                        typeCheckingMode = "off",
-                                        autoSearchPaths = true,
-                                        diagnosticMode = "workspace",
-                                        useLibraryCodeForTypes = true
-                                    }
-                                }
-                            }
-                        })
-                    end,
-                    ruff = function()
-                        require 'lspconfig'.ruff.setup({})
-                    end
+            })
+
+            vim.lsp.config('lua_ls', {})
+
+            vim.lsp.config('basedpyright', {
+                settings = {
+                    python = {
+                        analysis = {
+                            typeCheckingMode = "off",
+                            autoSearchPaths = true,
+                            diagnosticMode = "workspace",
+                            useLibraryCodeForTypes = true
+                        }
+                    }
                 }
             })
+
+            vim.lsp.config('ruff', {})
+
+            vim.lsp.config('gopls', {
+                settings = {
+                    gopls = {
+                        buildFlags = { "-tags=pki" }
+                    },
+                }
+            })
+
         end
     },
 }
