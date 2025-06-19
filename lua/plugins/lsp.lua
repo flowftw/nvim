@@ -100,7 +100,7 @@ return {
 
             vim.lsp.config('basedpyright', {
                 settings = {
-                    python = {
+                    basedpyright = {
                         analysis = {
                             typeCheckingMode = "off",
                             autoSearchPaths = true,
@@ -120,7 +120,6 @@ return {
                     },
                 }
             })
-
         end
     },
 }
