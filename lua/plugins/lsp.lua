@@ -7,6 +7,7 @@ return {
             'neovim/nvim-lspconfig',
             'hrsh7th/cmp-nvim-lsp',
             'mfussenegger/nvim-ansible',
+            'mfussenegger/nvim-jdtls',
             'hrsh7th/nvim-cmp',
             'hrsh7th/cmp-path',
             'saadparwaiz1/cmp_luasnip',
@@ -120,6 +121,8 @@ return {
                     },
                 }
             })
+
+            vim.lsp.config('jdtls', {})
         end
     },
 }
