@@ -43,13 +43,13 @@ return {
                     layout_strategy = 'vertical',
                     vimgrep_arguments = vimgrep_arguments,
                     file_ignore_patterns = {
-                        "node_modules", "build", "dist", "yarn.lock"
+                        "node_modules", "dist", "yarn.lock"
                     },
                     border = false
                 },
                 pickers = {
                     find_files = {
-                        find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+                        find_command = { 'rg', '--files', '--hidden', '-g' ,'!.git' },
                     },
                 }
             }
