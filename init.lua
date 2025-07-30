@@ -40,7 +40,7 @@ vim.opt.cursorline = true
 
 vim.opt.background = "dark"
 
-vim.o.winborder = "rounded"
+vim.opt.winborder = "rounded"
 
 -- copy to clipboard using ocs52. Terminal emulator needs to support that.
 vim.g.clipboard = {
