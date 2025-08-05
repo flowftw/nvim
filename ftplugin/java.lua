@@ -187,13 +187,27 @@ local config = {
     --
     -- vim.fs.root requires Neovim 0.10.
     -- If you're using an earlier version, use: require('jdtls.setup').find_root({'.git', 'mvnw', 'gradlew'}),
-    root_dir = vim.fs.root(0, { "gradlew", ".mvnw", ".git" }),
+    root_dir = vim.fs.root(0, { ".git", "build.gradle.kts", "build.gradle", ".gradlew", ".mvnw" }),
 
     -- Here you can configure eclipse.jdt.ls specific settings
     -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
     -- for a list of options
     settings = {
         java = {
+            imports = {
+                gradle = {
+                    enabled = true,
+                    wrapper = {
+                        enabled = true,
+                        checksums = {
+                            {
+                                sha256 = "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172",
+                                allowed = true
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
 
@@ -205,7 +219,25 @@ local config = {
     --
     -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
     init_options = {
-        bundles = {}
+        bundles = {},
+        settings = {
+            java = {
+                imports = {
+                    gradle = {
+                        enabled = true,
+                        wrapper = {
+                            enabled = true,
+                            checksums = {
+                                {
+                                    sha256 = "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172",
+                                    allowed = true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     },
 }
 -- This starts a new client & server,
