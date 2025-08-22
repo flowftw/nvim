@@ -141,6 +141,7 @@ return {
                 view_options = {
                     show_hidden = true,
                     is_always_hidden = function(name, bufnr)
+                        -- hehe
                         local m = name:match("[.][.]")
                         return m ~= nil
                     end,
