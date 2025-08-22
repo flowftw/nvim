@@ -22,7 +22,7 @@ return {
     "folke/neodev.nvim",
     {
         'nvim-telescope/telescope.nvim',
-        branch = '0.1.x',
+        branch = 'master',
         dependencies = {
             'nvim-lua/plenary.nvim'
         },
@@ -45,11 +45,11 @@ return {
                     file_ignore_patterns = {
                         "node_modules", "dist", "yarn.lock"
                     },
-                    border = false
+                    border = true
                 },
                 pickers = {
                     find_files = {
-                        find_command = { 'rg', '--files', '--hidden', '-g' ,'!.git' },
+                        find_command = { 'rg', '--files', '--hidden', '-g', '!.git' },
                     },
                 }
             }
@@ -137,7 +137,15 @@ return {
         dependencies = { { "echasnovski/mini.icons", opts = {} } },
         config = function()
             require("oil").setup({
-                default_file_explorer = true
+                default_file_explorer = true,
+                view_options = {
+                    show_hidden = true,
+                    is_always_hidden = function(name, bufnr)
+                        local m = name:match("[.][.]")
+                        return m ~= nil
+                    end,
+
+                }
             })
             vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
         end
