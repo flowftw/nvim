@@ -58,6 +58,10 @@ vim.g.clipboard = {
 vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
 vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
 
+-- diff get and put single line
+vim.keymap.set("n", "dlo", "<cmd>.,.diffg<CR>")
+vim.keymap.set("n", "dlp", "<cmd>.,.diffg<CR>")
+
 -- Detect helm filetypes in yaml.
 -- Seems to work good enough for now.
 vim.filetype.add({
