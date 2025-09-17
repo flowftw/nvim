@@ -62,6 +62,10 @@ vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
 vim.keymap.set("n", "dlo", "<cmd>.,.diffg<CR>")
 vim.keymap.set("n", "dlp", "<cmd>.,.diffg<CR>")
 
+-- base64 stuff
+vim.keymap.set("v", "<leader>e64", 'c<c-r>=system(\'base64\', @")<cr><esc>')
+vim.keymap.set("v", "<leader>d64", 'c<c-r>=system(\'base64 -d\', @")<cr><esc>')
+
 -- Detect helm filetypes in yaml.
 -- Seems to work good enough for now.
 vim.filetype.add({
