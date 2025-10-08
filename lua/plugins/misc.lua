@@ -151,5 +151,12 @@ return {
             vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
         end
         -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-    }
+    },
+    {
+        'ovk/endec.nvim',
+        event = "VeryLazy",
+        opts = {
+            -- Override default configuration here
+        }
+    },
 }
