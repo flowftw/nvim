@@ -10,19 +10,20 @@ return {
                     transparency = false,
                 },
             })
-
-            vim.cmd("colorscheme rose-pine")
+            -- configure neogit colors to better match rose-pine
+            local ok, neogit_colors = pcall(require, "config.neogit_colors")
+            if ok and neogit_colors and type(neogit_colors.setup) == "function" then
+                neogit_colors.setup()
+            end
         end
     },
     {
         "catppuccin/nvim",
         name = "catppuccin",
-        priority = 1000,
         config = function()
             require("catppuccin").setup({
                 no_italic = true
             })
-            vim.cmd("colorscheme catppuccin")
         end
     },
     -- {
