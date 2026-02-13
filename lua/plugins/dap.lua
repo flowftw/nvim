@@ -9,21 +9,6 @@ return {
             "leoluz/nvim-dap-go",
         },
         config = function()
-            require('dap.ext.vscode').load_launchjs()
-            -- require('dap.ext.vscode').json_decode = require'json5'.parse
-            --[[
-            dap.adapters.java = function(callback)
-                -- FIXME:
-                -- Here a function needs to trigger the `vscode.java.startDebugSession` LSP command
-                -- The response to the command must be the `port` used below
-                callback({
-                    type = 'server';
-                    host = '127.0.0.1';
-                    port = port;
-                })
-            end
-            ]]
-
             local dap = require('dap')
 
             local debugpy_python_path = os.getenv("HOME") .. '/.local/share/nvim/mason/packages/debugpy/venv/bin/python'
