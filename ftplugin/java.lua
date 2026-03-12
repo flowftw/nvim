@@ -1,4 +1,6 @@
-local root_dir = vim.fs.root(0, { '.git', { 'build.gradle.kts', 'build.gradle', '.gradlew', '.mvnw' } })
+-- try to catch projects proper root dir with settings.gradle.kts when projects are subfolders
+-- of another project but are completely separate
+local root_dir = vim.fs.root(0, { 'settings.gradle.kts', '.git', { 'build.gradle.kts', 'build.gradle', '.gradlew', '.mvnw' } })
 local home = os.getenv('HOME')
 local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 local install_path = home .. "/.local/share/nvim/mason/packages/jdtls/"
