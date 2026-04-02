@@ -1,9 +1,9 @@
 return {
     -- LSP
     {
-        'williamboman/mason.nvim',
+        'mason-org/mason.nvim',
         dependencies = {
-            'williamboman/mason-lspconfig.nvim',
+            'mason-org/mason-lspconfig.nvim',
             'neovim/nvim-lspconfig',
             'hrsh7th/cmp-nvim-lsp',
             'mfussenegger/nvim-ansible',
@@ -94,7 +94,7 @@ return {
             require('mason').setup({})
 
             require('mason-lspconfig').setup({
-                ensure_installed = { 'jdtls' },
+                ensure_installed = { 'lua_ls', 'basedpyright', 'ruff', 'gopls', 'terraformls', 'jdtls' },
                 automatic_enable = {
                     exclude = {
                         "jdtls"
@@ -126,6 +126,10 @@ return {
                     },
                 }
             })
+
+            vim.lsp.config('terraformls', {})
+
+            vim.lsp.enable({ 'lua_ls', 'basedpyright', 'ruff', 'gopls', 'terraformls' })
 
             -- TODO: maybe 
             -- local root_dir = vim.fs.root(0, { '.git', { 'build.gradle.kts', 'build.gradle', '.gradlew', '.mvnw' } })
