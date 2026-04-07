@@ -79,7 +79,7 @@ vim.filetype.add({
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'hcl', 'helm', 'tf', 'java', 'lua', 'yaml', 'gitcommit' },
+  pattern = { 'hcl', 'helm', 'tf', 'java', 'lua', 'yaml', 'gitcommit', 'bash', 'fish' },
   callback = function() vim.treesitter.start() end,
 })
 
