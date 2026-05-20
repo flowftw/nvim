@@ -58,6 +58,7 @@ return {
             vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
             vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
             vim.keymap.set('n', '<leader>ft', builtin.treesitter, {})
+            vim.keymap.set('n', '<leader>fl', builtin.lsp_document_symbols, {})
             vim.keymap.set('n', '<leader>fr', builtin.resume, {})
         end
     },
