@@ -36,6 +36,7 @@ return {
             end, {})
             vim.keymap.set('n', '<leader>gdd', "<cmd>DiffviewOpen origin/dev...HEAD<cr>", {})
             vim.keymap.set('n', '<leader>gdm', "<cmd>DiffviewOpen origin/main...HEAD<cr>", {})
+            vim.keymap.set('n', '<leader>gdo', "<cmd>DiffviewOpen<cr>", {})
             vim.keymap.set('n', '<leader>gdc', "<cmd>DiffviewClose<cr>", {})
         end
     },
