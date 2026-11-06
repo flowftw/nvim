@@ -18,7 +18,16 @@ return {
     --     --     }
     --     -- }
     -- },
-    { "folke/neoconf.nvim", cmd = "Neoconf" },
+    {
+        "folke/neoconf.nvim",
+        cmd = "Neoconf",
+        opts = {
+            import = {
+                -- never read VS Code's .vscode/settings.json (nvim-jdtls + jdtls own their config)
+                vscode = false,
+            },
+        },
+    },
     "folke/neodev.nvim",
     {
         'nvim-telescope/telescope.nvim',
